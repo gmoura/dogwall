@@ -2,13 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch
-} from 'react-router-dom';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
 
+import history from './helpers/history';
 import { language, messages } from './config/intl';
 import * as serviceWorker from './serviceWorker';
 import store from './store';
@@ -23,7 +19,7 @@ import PrivateRoute from './components/PrivateRoute';
 ReactDOM.render(
   <Provider store={store}>
     <IntlProvider locale={language} messages={messages}>
-      <Router>
+      <Router history={history}>
         <App>
           <Switch>
             <Route exact path="/" component={() => <Redirect to="/signup" />} />
