@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Menu from '../components/Menu';
+import PhotoGrid from '../components/PhotoGrid';
 
 import loadFeed from '../actions/feed';
 
@@ -20,8 +21,7 @@ class Feed extends Component {
     return (
       <section>
         <Menu auth={auth} loadFeed={loadFeed} />
-        {feed.list &&
-          feed.list.map(item => <img key={item} src={item} alt="dog" />)}
+        {feed.list && <PhotoGrid data={feed.list} />}
       </section>
     );
   }
