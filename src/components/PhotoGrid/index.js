@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   }
 });
 
-const PhotoGrid = ({ data }) => {
+const PhotoGrid = ({ data, loadImagePreview }) => {
   const classes = useStyles();
 
   return (
@@ -23,7 +23,7 @@ const PhotoGrid = ({ data }) => {
             <img
               src={photo}
               alt={photo}
-              onClick={event => console.log(event.target)}
+              onClick={() => loadImagePreview(photo)}
             />
           </GridListTile>
         ))}

@@ -4,8 +4,10 @@ import { bindActionCreators } from 'redux';
 
 import Menu from '../components/Menu';
 import PhotoGrid from '../components/PhotoGrid';
+import ImagePreview from '../components/PhotoGrid/ImagePreview';
 
 import loadFeed from '../actions/feed';
+import { loadImagePreview, closeImagePreview } from '../actions/image_preview';
 
 class Feed extends Component {
   componentDidMount() {
@@ -17,11 +19,24 @@ class Feed extends Component {
   }
 
   render() {
-    const { feed, loadFeed, auth } = this.props;
+    const {
+      feed,
+      loadFeed,
+      auth,
+      loadImagePreview,
+      closeImagePreview,
+      imagePreview
+    } = this.props;
     return (
       <section>
         <Menu auth={auth} loadFeed={loadFeed} />
-        {feed.list && <PhotoGrid data={feed.list} />}
+        {feed.list && (
+          <PhotoGrid data={feed.list} loadImagePreview={loadImagePreview} />
+        )}
+        <ImagePreview
+          image={imagePreview}
+          closeImagePreview={closeImagePreview}
+        />
       </section>
     );
   }
@@ -29,13 +44,16 @@ class Feed extends Component {
 
 const mapStateToProps = state => ({
   feed: state.feed,
-  auth: state.auth
+  auth: state.auth,
+  imagePreview: state.imagePreview
 });
 
 const mapActionToDispatch = dispatch =>
   bindActionCreators(
     {
-      loadFeed
+      loadFeed,
+      loadImagePreview,
+      closeImagePreview
     },
     dispatch
   );

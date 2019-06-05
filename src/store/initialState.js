@@ -1,4 +1,7 @@
 export default {
   auth: {},
-  feed: {}
+  feed: {},
+  imagePreview: {
+    src: ''
+  }
 };
