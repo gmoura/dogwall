@@ -28,7 +28,7 @@ ReactDOM.render(
           <Switch>
             <Route exact path="/" component={() => <Redirect to="/signup" />} />
             <Route path="/signup" component={() => <Login />} />
-            <PrivateRoute exact path="/feed" component={Feed} />
+            <PrivateRoute exact path="/feed" component={() => <Feed />} />
             <PrivateRoute exact path="/feed/:id" component={Image} />
           </Switch>
         </App>

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
+import Menu from '../components/Menu';
+
 import loadFeed from '../actions/feed';
 
 class Feed extends Component {
@@ -13,11 +16,12 @@ class Feed extends Component {
   }
 
   render() {
-    const { feed } = this.props;
+    const { feed, loadFeed, auth } = this.props;
     return (
       <section>
-        <h1>Feed</h1>
-        {feed.list && feed.list.map(item => <img src={item} alt="dog" />)}
+        <Menu auth={auth} loadFeed={loadFeed} />
+        {feed.list &&
+          feed.list.map(item => <img key={item} src={item} alt="dog" />)}
       </section>
     );
   }
