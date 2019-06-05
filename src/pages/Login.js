@@ -5,10 +5,7 @@ import FormLogin from '../components/FormLogin';
 import authUser from '../actions/auth';
 
 const Login = ({ auth, authUser }) => (
-  <section>
-    <h1>Login</h1>
-    <FormLogin auth={auth} authUser={authUser} />
-  </section>
+  <FormLogin auth={auth} authUser={authUser} />
 );
 
 const mapStateToProps = state => ({

@@ -1,22 +1,52 @@
 import React, { useState } from 'react';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  root: {
+    textAlign: 'center'
+  },
+  form: {
+    padding: 20,
+    margin: 20
+  },
+  input: {
+    marginBottom: 15
+  }
+});
 
 const Form = ({ authUser }) => {
   const [email, setEmail] = useState('');
+  const classes = useStyles();
+
   return (
-    <form
-      onSubmit={event => {
-        event.preventDefault();
-        authUser(email);
-      }}
-    >
-      <input
-        type="text"
-        name="email"
-        value={email}
-        onChange={event => setEmail(event.target.value)}
-      />
-      <button type="submit">Entrar</button>
-    </form>
+    <Paper className={classes.form}>
+      <form
+        className={classes.root}
+        noValidate
+        autoComplete="off"
+        onSubmit={event => {
+          event.preventDefault();
+          authUser(email);
+        }}
+      >
+        <TextField
+          id="email"
+          label="Email"
+          value={email}
+          onChange={event => setEmail(event.target.value)}
+          margin="normal"
+          fullWidth
+          className={classes.input}
+        />
+
+        <Button variant="contained" color="primary" type="submit">
+          Entrar
+        </Button>
+      </form>
+    </Paper>
   );
 };
 
