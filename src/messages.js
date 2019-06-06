@@ -1,8 +1,8 @@
 export default {
   en: {
-    'hello.world': 'Hello world'
+    signup: 'Entrar'
   },
   'pt-BR': {
-    'hello.world': 'Oi mundo'
+    signup: 'Signup'
   }
 };

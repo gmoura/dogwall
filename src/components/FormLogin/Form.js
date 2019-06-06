@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
@@ -43,7 +44,7 @@ const Form = ({ authUser }) => {
         />
 
         <Button variant="contained" color="primary" type="submit">
-          Entrar
+          <FormattedMessage id="signup" />
         </Button>
       </form>
     </Paper>
